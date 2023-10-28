@@ -5,13 +5,15 @@ public class RunState : IState
 {
     float timer = 0;
     float xVelocity = 1;
-    public void OnEnterState(StateMachine sm)
+    StateMachine sm;
+    public void OnEnterState(StateMachine stateMachine)
     {
+        sm = stateMachine;
         sm.InitDebugText();
         
         timer = 0;
     }
-    public void UpdateState(StateMachine sm)
+    public void UpdateState()
     {
         // Update
         sm.gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
@@ -26,11 +28,11 @@ public class RunState : IState
         RunTest(); 
     }
 
-    public void FixedUpdateState(StateMachine sm)
+    public void FixedUpdateState()
     {
         // Physics update
     }
-    public void OnExitState(StateMachine sm)
+    public void OnExitState()
     {
         // Exiting this state
     }

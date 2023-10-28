@@ -4,18 +4,20 @@ using UnityEngine;
 public class IdleState : IState
 {
     float timer = 0;
+    StateMachine sm;
 
-    public void OnEnterState(StateMachine sm)
+    public void OnEnterState(StateMachine stateMachine)
     {
+        sm = stateMachine;
         sm.InitDebugText();
         
 
         Debug.Log("entering idle state");
 
-        // this is how to access a method that might be shared between all states
+        // this is how to access a method that can be shared between all states
         sm.ExampleSharedMethod();
     }
-    public void UpdateState(StateMachine sm)
+    public void UpdateState()
     {
         sm.gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
 
@@ -30,10 +32,10 @@ public class IdleState : IState
 
 
 
-    public void FixedUpdateState(StateMachine sm)
+    public void FixedUpdateState()
     {
     }
-    public void OnExitState(StateMachine sm)
+    public void OnExitState()
     {
         Debug.Log("Exiting idle state ");
     }

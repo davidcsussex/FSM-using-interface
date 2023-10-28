@@ -4,10 +4,10 @@ using UnityEngine;
 
 public interface IState
 {
-    public void UpdateState(StateMachine sm);
-    public void FixedUpdateState(StateMachine sm);
+    public void UpdateState();
+    public void FixedUpdateState();
     public void OnEnterState(StateMachine sm);
-    public void OnExitState(StateMachine sm);
+    public void OnExitState();
 }
 
 
@@ -39,7 +39,7 @@ public class StateMachine : MonoBehaviour
     {
         if (currentState != null)
         {
-            currentState.UpdateState(this);
+            currentState.UpdateState();
         }
 
     }
@@ -48,7 +48,7 @@ public class StateMachine : MonoBehaviour
     {
         if (currentState != null)
         {
-            currentState.FixedUpdateState(this);
+            currentState.FixedUpdateState();
         }
     }
 
@@ -56,7 +56,7 @@ public class StateMachine : MonoBehaviour
     {
         if (currentState != null)
         {
-            currentState.OnExitState(this);
+            currentState.OnExitState();
         }
         lastState = currentState;
         currentState = newState;
@@ -97,7 +97,7 @@ public class StateMachine : MonoBehaviour
             lastStateText = lastState.ToString();
         else
             lastStateText = "null";
-        text = $"Current State = Idle\nLast state was {lastStateText}\nPress R to change to Run state";
+        text = $"Current State = Idle\nLast state was {lastStateText}\nPress R to change to Run state\nPress I to change to Idle state";
     }
 
 
