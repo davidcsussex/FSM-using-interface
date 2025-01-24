@@ -85,7 +85,7 @@ public class StateMachine : MonoBehaviour
 
     public void MoveSprite( float xv, float yv )
     {
-        rb.velocity = new Vector3(xv, yv, 0);
+        rb.linearVelocity = new Vector3(xv, yv, 0);
 
     }
 
